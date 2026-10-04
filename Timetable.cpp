@@ -181,10 +181,43 @@ void TimetableBST::clear() {
 }
 
 void TimetableBST::displayByStudentModules(string prog, const string modules[], int modCount) const {
+    displayByStudentModulesAndWeeklySchedule(prog, modules, modCount);
+}
+
+void TimetableBST::displayByStudentModulesAndWeeklySchedule(string prog, const string modules[], int modCount) const {
+    string days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
     cout << "\n========================================================" << endl;
-    cout << "     REGISTERED PERSONAL TIMETABLE FOR: " << prog << endl;
+    cout << "     FULL 5-DAY WEEKLY SCHEDULE (MONDAY - FRIDAY)        " << endl;
+    cout << "     PROGRAM: " << prog << endl;
     cout << "========================================================" << endl;
-    filterByStudentModulesRec(root, prog, modules, modCount);
+    for (int i = 0; i < 5; i++) {
+        cout << "\n>>> DAY: " << days[i] << " <<<" << endl;
+        displayByStudentModulesAndDay(prog, modules, modCount, days[i]);
+    }
+    cout << "========================================================\n" << endl;
+}
+
+void TimetableBST::displayByStudentModulesAndDay(string prog, const string modules[], int modCount, string day) const {
+    filterByStudentModulesAndDayRec(root, prog, modules, modCount, day);
+}
+
+void TimetableBST::filterByStudentModulesAndDayRec(TimetableNode* node, string prog, const string modules[], int modCount, string day) const {
+    if (node == nullptr) return;
+    filterByStudentModulesAndDayRec(node->left, prog, modules, modCount, day);
+    
+    if (node->data.getProgram() == prog && node->data.getDayOfWeek() == day) {
+        bool match = false;
+        for (int i = 0; i < modCount; i++) {
+            if (node->data.getCourseID() == modules[i]) {
+                match = true;
+                break;
+            }
+        }
+        if (match) {
+            node->data.display();
+        }
+    }
+    filterByStudentModulesAndDayRec(node->right, prog, modules, modCount, day);
 }
 
 void TimetableBST::filterByStudentModulesRec(TimetableNode* node, string prog, const string modules[], int modCount) const {

@@ -1,0 +1,3 @@
+LAB101,ICTLAB,Laboratory,Science Block,40,Available
+LEC201,Main Hall,Lecture Room,Main Hall,150,Occupied
+PRJ001,Projector A,Equipment,Store Room,1,Available

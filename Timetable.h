@@ -79,11 +79,14 @@ private:
     void filterByProgramRec(TimetableNode* node, string prog)           const;
     void filterByProgramAndDayRec(TimetableNode* node, string prog, string day) const;
     void filterByStudentModulesRec(TimetableNode* node, string prog, const string modules[], int modCount) const;
+    void filterByStudentModulesAndDayRec(TimetableNode* node, string prog, const string modules[], int modCount, string day) const;
     bool checkConflictRec(TimetableNode* node, string day, string start, string room, string lecID, string prog) const;
 
 public:
     void clear();
     void displayByStudentModules(string prog, const string modules[], int modCount) const;
+    void displayByStudentModulesAndWeeklySchedule(string prog, const string modules[], int modCount) const;
+    void displayByStudentModulesAndDay(string prog, const string modules[], int modCount, string day) const;
     bool isConflict(string day, string start, string room, string lecID, string prog) const;
 };
 

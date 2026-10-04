@@ -661,13 +661,32 @@ int main() {
                         timetable.displayByStudentModules(loggedIn->getProgram(), modCodes, mCount);
                     }
                 } else if (choice == 5) {
-                    // Pull a specific day's classes for THIS student's program
+                    // Pull a specific day's classes for THIS student's registered modules
+                    int year, semester;
                     string day;
                     cout << "Enter day (e.g. Monday): "; getline(cin, day);
-                    timetable.displayByProgramAndDay(loggedIn->getProgram(), day);
+                    cout << "Enter Academic Year (1-4): "; cin >> year;
+                    cout << "Enter Semester (1-2): "; cin >> semester; cin.ignore();
+                    
+                    ModuleInfo mods[20];
+                    int mCount = getModulesForStudent(loggedIn->getProgram(), year, semester, mods);
+                    string modCodes[20];
+                    for (int i = 0; i < mCount; i++) modCodes[i] = mods[i].code;
+                    
+                    cout << "\n--- Personal Schedule for " << day << " ---" << endl;
+                    timetable.displayByStudentModulesAndDay(loggedIn->getProgram(), modCodes, mCount, day);
                 } else if (choice == 6) {
-                    // Full weekly timetable for THIS student's program
-                    timetable.displayByProgram(loggedIn->getProgram());
+                    // Full weekly 5-day timetable for THIS student's registered modules
+                    int year, semester;
+                    cout << "Enter Academic Year (1-4): "; cin >> year;
+                    cout << "Enter Semester (1-2): "; cin >> semester; cin.ignore();
+                    
+                    ModuleInfo mods[20];
+                    int mCount = getModulesForStudent(loggedIn->getProgram(), year, semester, mods);
+                    string modCodes[20];
+                    for (int i = 0; i < mCount; i++) modCodes[i] = mods[i].code;
+                    
+                    timetable.displayByStudentModulesAndWeeklySchedule(loggedIn->getProgram(), modCodes, mCount);
                 } else if (choice == 7) {
                     showNavMenu(campusMap);
                 } else if (choice == 8) {
