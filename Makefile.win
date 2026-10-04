@@ -1,0 +1,67 @@
+# Project: Project Zero
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o UserHashTable.o User.o Tree.o Timetable.o Stack.o Sorting.o Resource.o Request.o Queue.o PriorityQueue.o LinkedList.o HashTable.o Graph.o
+LINKOBJ  = main.o UserHashTable.o User.o Tree.o Timetable.o Stack.o Sorting.o Resource.o Request.o Queue.o PriorityQueue.o LinkedList.o HashTable.o Graph.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = "Project Zero.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+UserHashTable.o: UserHashTable.cpp
+	$(CPP) -c UserHashTable.cpp -o UserHashTable.o $(CXXFLAGS)
+
+User.o: User.cpp
+	$(CPP) -c User.cpp -o User.o $(CXXFLAGS)
+
+Tree.o: Tree.cpp
+	$(CPP) -c Tree.cpp -o Tree.o $(CXXFLAGS)
+
+Timetable.o: Timetable.cpp
+	$(CPP) -c Timetable.cpp -o Timetable.o $(CXXFLAGS)
+
+Stack.o: Stack.cpp
+	$(CPP) -c Stack.cpp -o Stack.o $(CXXFLAGS)
+
+Sorting.o: Sorting.cpp
+	$(CPP) -c Sorting.cpp -o Sorting.o $(CXXFLAGS)
+
+Resource.o: Resource.cpp
+	$(CPP) -c Resource.cpp -o Resource.o $(CXXFLAGS)
+
+Request.o: Request.cpp
+	$(CPP) -c Request.cpp -o Request.o $(CXXFLAGS)
+
+Queue.o: Queue.cpp
+	$(CPP) -c Queue.cpp -o Queue.o $(CXXFLAGS)
+
+PriorityQueue.o: PriorityQueue.cpp
+	$(CPP) -c PriorityQueue.cpp -o PriorityQueue.o $(CXXFLAGS)
+
+LinkedList.o: LinkedList.cpp
+	$(CPP) -c LinkedList.cpp -o LinkedList.o $(CXXFLAGS)
+
+HashTable.o: HashTable.cpp
+	$(CPP) -c HashTable.cpp -o HashTable.o $(CXXFLAGS)
+
+Graph.o: Graph.cpp
+	$(CPP) -c Graph.cpp -o Graph.o $(CXXFLAGS)
